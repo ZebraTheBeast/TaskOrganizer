@@ -1,7 +1,6 @@
-﻿using Entities.Enums;
-using TaskOrganizer.Entities;
+﻿using TaskOrganizer.Entities.Enums;
 
-namespace Entities
+namespace TaskOrganizer.Entities
 {
 	public class User : BaseEntity
 	{

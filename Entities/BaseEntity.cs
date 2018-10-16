@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace TaskOrganizer.Entities
 {
 	public class BaseEntity
     {
-		public int Id { get; set; }
+        [Key]
+		public long Id { get; set; }
 		public DateTime CreationDate { get; set; }
 
 		public BaseEntity()

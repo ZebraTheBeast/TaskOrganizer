@@ -1,4 +1,4 @@
-﻿namespace Entities.Enums
+﻿namespace TaskOrganizer.Entities.Enums
 {
 	public enum UserType
 	{

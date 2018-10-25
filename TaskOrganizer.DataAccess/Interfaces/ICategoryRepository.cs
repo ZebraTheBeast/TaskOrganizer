@@ -3,7 +3,7 @@ using TaskOrganizer.Entities;
 
 namespace TaskOrganizer.DataAccess.Interfaces
 {
-	public interface ICategoryRepository : IGenericRepository<Category>
+	public interface ICategoryRepository : IBaseRepository<Category>
 	{
 
 	}

@@ -1,8 +1,12 @@
-﻿namespace TaskOrganizer.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TaskOrganizer.Entities
 {
 	public class Category : BaseEntity
 	{
-		public string Title { get; set; }
-		public long UserId { get; set; }
+        [Required]
+        public string Title { get; set; }
+        [Required]
+        public long UserId { get; set; }
 	}
 }

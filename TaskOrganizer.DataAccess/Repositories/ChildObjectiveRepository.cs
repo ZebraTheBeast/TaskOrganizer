@@ -1,9 +1,9 @@
-﻿using Entities;
-using TaskOrganizer.DataAccess.Interfaces;
+﻿using TaskOrganizer.DataAccess.Interfaces;
+using TaskOrganizer.Entities;
 
 namespace TaskOrganizer.DataAccess.Repositories
 {
-    public class ChildObjectiveRepository : GenericRepository<ChildObjective>, IChildObjectiveRepository
+    public class ChildObjectiveRepository : BaseRepository<ChildObjective>, IChildObjectiveRepository
     {
         public ChildObjectiveRepository(string connectionString) : base(connectionString)
         {

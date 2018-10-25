@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using TaskOrganizer.Entities;
 
-namespace Entities
+namespace TaskOrganizer.Entities
 {
     public class MainObjective : BaseObjective
     {

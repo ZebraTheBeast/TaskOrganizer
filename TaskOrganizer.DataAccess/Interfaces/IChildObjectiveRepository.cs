@@ -1,8 +1,8 @@
-﻿using Entities;
+﻿using TaskOrganizer.Entities;
 
-namespace TaskOrganizer.DataAccess.Interfaces 
+namespace TaskOrganizer.DataAccess.Interfaces
 {
-    public interface IChildObjectiveRepository : IGenericRepository<ChildObjective>
+    public interface IChildObjectiveRepository : IBaseRepository<ChildObjective>
 	{
 		
 	}

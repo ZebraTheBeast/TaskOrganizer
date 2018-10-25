@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TaskOrganizer.DataAccess.Context;
 using TaskOrganizer.DataAccess.Interfaces;
+using TaskOrganizer.Entities;
 
 namespace TaskOrganizer.DataAccess.Repositories
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         DbSet<TEntity> _dbSet;
         TaskOrganizerContext _context;
 
-        public GenericRepository(string connectionString)
+        public BaseRepository(string connectionString)
         {
             _context = new TaskOrganizerContext(connectionString);
             _dbSet = _context.Set<TEntity>();

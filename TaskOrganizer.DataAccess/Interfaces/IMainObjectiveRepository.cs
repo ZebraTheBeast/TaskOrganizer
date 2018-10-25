@@ -1,8 +1,8 @@
-﻿using Entities;
+﻿using TaskOrganizer.Entities;
 
-namespace TaskOrganizer.DataAccess.Interfaces 
+namespace TaskOrganizer.DataAccess.Interfaces
 {
-    public interface IMainObjectiveRepository : IGenericRepository<MainObjective>
+    public interface IMainObjectiveRepository : IBaseRepository<MainObjective>
 	{
 		
 	}

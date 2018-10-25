@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskOrganizer.BusinessLogic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskOrganizer.DataAccess", "TaskOrganizer.DataAccess\TaskOrganizer.DataAccess.csproj", "{96BDF3A3-982B-410B-9570-3F97FFC1030D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskOrganizer.WebApp", "TaskOrganizer.WebApp\TaskOrganizer.WebApp.csproj", "{E5DA6ABE-7DD5-4C79-8624-FF62E2F6470C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{96BDF3A3-982B-410B-9570-3F97FFC1030D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96BDF3A3-982B-410B-9570-3F97FFC1030D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96BDF3A3-982B-410B-9570-3F97FFC1030D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5DA6ABE-7DD5-4C79-8624-FF62E2F6470C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5DA6ABE-7DD5-4C79-8624-FF62E2F6470C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5DA6ABE-7DD5-4C79-8624-FF62E2F6470C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5DA6ABE-7DD5-4C79-8624-FF62E2F6470C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

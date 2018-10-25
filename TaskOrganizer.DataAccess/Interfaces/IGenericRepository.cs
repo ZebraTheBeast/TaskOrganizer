@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace TaskOrganizer.DataAccess.Interfaces
 {
-	public interface IGenericRepository<TEntity> where TEntity : class
+	public interface IBaseRepository<TEntity> where TEntity : class
 	{
 		Task Add(TEntity item);
 		Task AddMultiple(List<TEntity> items);

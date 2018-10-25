@@ -7,8 +7,8 @@
     <ProjectGuid>{B2E2AD5B-463F-4E84-9384-AACC88F6B504}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Entities</RootNamespace>
-    <AssemblyName>Entities</AssemblyName>
+    <RootNamespace>TaskOrganizer.Entities</RootNamespace>
+    <AssemblyName>TaskOrganizer.Entities</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,9 +49,11 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="ChildObjective.cs" />
     <Compile Include="Enums\ObjectiveStatus.cs" />
     <Compile Include="Enums\UserType.cs" />
-    <Compile Include="Objective.cs" />
+    <Compile Include="BaseObjective.cs" />
+    <Compile Include="MainObjective.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

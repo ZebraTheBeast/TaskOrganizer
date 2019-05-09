@@ -12,9 +12,5 @@ namespace TaskOrganizer.Entities
         public ObjectiveStatus Status { get; set; }
         public DateTime? DeadLine { get; set; }
 
-        [Required]
-        public long CategoryId { get; set; }
-        public virtual Category Category { get; set; }
-
     }
 }

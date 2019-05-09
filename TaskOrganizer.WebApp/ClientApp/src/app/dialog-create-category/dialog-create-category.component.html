@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Category</h1>
+<div mat-dialog-content>
+  <p>Category input:</p>
+  <mat-form-field>
+    <input matInput placeholder="Title" [(ngModel)]="data.title">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea  matInput placeholder="Description" [(ngModel)]="data.description"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>

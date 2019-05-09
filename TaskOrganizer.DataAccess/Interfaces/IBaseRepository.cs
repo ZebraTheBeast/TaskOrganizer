@@ -5,7 +5,7 @@ namespace TaskOrganizer.DataAccess.Interfaces
 {
 	public interface IBaseRepository<TEntity> where TEntity : class
 	{
-		Task Add(TEntity item);
+		Task<TEntity> Add(TEntity item);
 		Task AddMultiple(List<TEntity> items);
 		Task Update(TEntity item);
 		Task Remove(TEntity item);

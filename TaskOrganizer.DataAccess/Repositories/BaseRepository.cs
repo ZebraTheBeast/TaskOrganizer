@@ -12,16 +12,17 @@ namespace TaskOrganizer.DataAccess.Repositories
         DbSet<TEntity> _dbSet;
         TaskOrganizerContext _context;
 
-        public BaseRepository(string connectionString)
+        public BaseRepository(TaskOrganizerContext context)
         {
-            _context = new TaskOrganizerContext(connectionString);
+            _context = context;
             _dbSet = _context.Set<TEntity>();
         }
 
-        public async Task Add(TEntity item)
+        public async Task<TEntity> Add(TEntity item)
         {
-            _dbSet.Add(item);
+            var retItem = _dbSet.Add(item);
             await _context.SaveChangesAsync();
+            return retItem;
         }
 
         public async Task AddMultiple(List<TEntity> items)

@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <div class="row">
+    
+    <div class="col-md-3 category-block">
+      <div class="block-header">Categories</div>
+      <cdk-virtual-scroll-viewport [itemSize]="100" class="viewport">
+
+        <div *cdkVirtualFor="let category of categories">
+          <a (click)="chooseCategory(category.id)" class="card" [class.choosen]="(choosenCategory)&&(category.id == choosenCategory.id)">
+            <h4 class="card-header">{{ category.title }}</h4>
+            <div *ngIf="category.description" class="card-body">
+              <p class="card-text">{{ category.description }}</p>
+            </div>
+          </a>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+
+    <div class="col-md-5 mainobjective-block">
+      <div class="block-header">Main objectives</div>
+      <cdk-virtual-scroll-viewport [itemSize]="100" class="viewport">
+
+        <div *ngIf="choosenCategory">
+          <div *ngFor="let mainObjective of choosenCategory.mainObjectives">
+
+            <a (click)="chooseMainObjective(mainObjective.id)" class="card" [class.choosen]="(choosenMainObjective)&&(mainObjective.id == choosenMainObjective.id)">
+              <h4 class="card-header" [class.no-description]="!mainObjective.description">{{ mainObjective.title}}</h4>
+              <div *ngIf="mainObjective.description" class="card-body">
+                <p class="card-text">{{ mainObjective.description }}</p>
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-md-6 status-block">Status: {{ mainObjective.status }}</div>
+                  <div class="col-md-6">
+                    Deadline: {{ mainObjective.deadLine | date }}
+                    <span *ngIf="!mainObjective.deadLine">None</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+
+    <div class="col-md-4 childobjective-block">
+      <div class="block-header">Child objectives</div>
+      <cdk-virtual-scroll-viewport [itemSize]="100" class="viewport">
+        <div *ngIf="choosenMainObjective">
+          <div *ngFor="let childObjective of choosenMainObjective.childObjectives">
+            <div class="card">
+              <h4 class="card-header no-description">{{ childObjective.title}}</h4>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-md-6 status-block">Status: {{ childObjective.status }}</div>
+                  <div class="col-md-6">
+                    Deadline: {{ childObjective.deadLine | date }}
+                    <span *ngIf="!childObjective.deadLine">None</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </div>
+</div>

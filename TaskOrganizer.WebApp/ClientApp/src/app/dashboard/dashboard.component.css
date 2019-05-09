@@ -1,0 +1,56 @@
+.category-block {
+  background-color: #E0E0E0;
+  border-right: solid 2px lightgrey;
+  padding: 0;
+}
+
+.mainobjective-block {
+  background-color: #E0E0E0;
+  padding: 0;
+}
+
+.childobjective-block {
+  background-color: #E0E0E0;
+  border-left: solid 2px lightgrey;
+  padding: 0;
+}
+
+.card:hover {
+  border-color: lightblue;
+}
+
+.card {
+  margin: 5px 15px;
+  border-color: darkgrey;
+}
+
+.choosen {
+  border: 1px solid blue;
+}
+
+.status-block {
+  border-right: 1px solid lightgrey;
+}
+
+.no-description {
+  border-bottom: 0px;
+}
+
+.block-header {
+  text-align: center;
+  font-size: 23px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-right: 0px;
+  border-left: 0px;
+  padding-bottom: 3px;
+}
+
+.viewport {
+  min-height: 85vh;
+}
+
+.card-button {
+  display: flex;
+}
+

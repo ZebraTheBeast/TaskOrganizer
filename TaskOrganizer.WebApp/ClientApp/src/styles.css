@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.mat-expansion-panel-body {
+  padding: 0 10px 10px !important;
+}
+
+
+.cdk-virtual-scroll-content-wrapper {
+  padding:5px 2px 5px 2px !important; 
+}
+
+.ng-star-inserted {
+  padding-bottom: 3px;
+}

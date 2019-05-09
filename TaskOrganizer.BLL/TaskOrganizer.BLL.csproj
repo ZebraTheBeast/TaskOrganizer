@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\TaskOrganizer.Entities.csproj" />
+    <ProjectReference Include="..\TaskOrganizer.DAL\TaskOrganizer.DAL.csproj" />
+    <ProjectReference Include="..\TaskOrganizer.ViewModels\TaskOrganizer.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

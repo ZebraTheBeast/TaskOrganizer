@@ -51,7 +51,6 @@
     <Compile Include="Category.cs" />
     <Compile Include="ChildObjective.cs" />
     <Compile Include="Enums\ObjectiveStatus.cs" />
-    <Compile Include="Enums\UserType.cs" />
     <Compile Include="BaseObjective.cs" />
     <Compile Include="MainObjective.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

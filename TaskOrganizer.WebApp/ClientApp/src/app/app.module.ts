@@ -17,10 +17,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule, MatNativeDateModule } from '@angular/material';
 import { DialogMainObjective } from './dialog-main-objective/dialog-main-objective.component';
-import { DialogChildObjective } from './dialog-child-objective/dialog-child-objective.component';
-import { DialogConfirmDelete } from './dialog-confirm-delete/dialog-confirm-delete.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { StatusPipe } from './shared/status';
+import { AccountComponent } from './account/account.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,8 +31,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     DashboardComponent,
     DialogCreateCategory,
     DialogMainObjective,
-    DialogChildObjective,
-    DialogConfirmDelete
+    StatusPipe,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatDatepickerModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMenuModule,
+    MatIconModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

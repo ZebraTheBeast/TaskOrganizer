@@ -1,0 +1,19 @@
+<div class="countainer-fluid">
+  <div class="row">
+    <div class="col-md-12 text-center mt-3">
+      <div *ngIf="status!='Ok' ">{{ status }}</div>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Username" [(ngModel)]="username">
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon svgIcon="{{hide ? 'visibility_off' : 'visibility'}}"></mat-icon>
+        </button>
+      </mat-form-field>
+      <br />
+      <button mat-button (click)="login()">Log in / Register</button>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@ export class MainObjective {
   id: number;
   title: string;
   description?: string;
-  status: string;
-  deadLine?: Date;
+  status: number;
+  deadline?: Date;
   childObjectives?: ChildObjective[];
 }

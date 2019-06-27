@@ -41,10 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryRequestView.cs" />
+    <Compile Include="ResponseUserView.cs" />
     <Compile Include="Shared\CategoryView.cs" />
+    <Compile Include="ChildObjectiveRequestView.cs" />
     <Compile Include="Shared\ChildObjectiveView.cs" />
+    <Compile Include="MainObjectiveRequestView.cs" />
     <Compile Include="Shared\MainObjectiveView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\UserView.cs" />
+    <Compile Include="UpdateStatusRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

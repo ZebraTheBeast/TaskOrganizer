@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskOrganizer.WebApp", "Tas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskOrganizer.ViewModels", "TaskOrganizer.ViewModels\TaskOrganizer.ViewModels.csproj", "{F71AE080-6D7B-4D15-8074-D680F95DE7CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskOrganizer.DAL", "TaskOrganizer.DAL\TaskOrganizer.DAL.csproj", "{485ECA41-5C74-4365-AB4C-EDFF5E41BCB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskOrganizer.DAL", "TaskOrganizer.DAL\TaskOrganizer.DAL.csproj", "{485ECA41-5C74-4365-AB4C-EDFF5E41BCB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskOrganizer.BLL", "TaskOrganizer.BLL\TaskOrganizer.BLL.csproj", "{853206DF-6436-498C-BF5D-280D991FC904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskOrganizer.BLL", "TaskOrganizer.BLL\TaskOrganizer.BLL.csproj", "{853206DF-6436-498C-BF5D-280D991FC904}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

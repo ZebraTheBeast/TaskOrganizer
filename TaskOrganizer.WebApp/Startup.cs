@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskOrganizer.BLL.Configs;
 using TaskOrganizer.DAL.Context;
+using TaskOrganizer.WebApp.Configs;
 
 namespace TestApp
 {
@@ -23,9 +24,8 @@ namespace TestApp
         public void ConfigureServices(IServiceCollection services)
         {
 
-
+            services = WebAppServiceExtensions.AddMyLibrary(services);
             services.AddDbContext<TaskOrganizerContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
@@ -72,7 +72,7 @@ namespace TestApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                    template: "{controller}/{action}/{id?}");
             });
 
             app.UseSpa(spa =>

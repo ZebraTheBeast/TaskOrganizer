@@ -1,16 +1,12 @@
-<h1 mat-dialog-title>Category</h1>
+<h1 mat-dialog-title>Objective</h1>
 <div mat-dialog-content>
-  <p>Main objective:</p>
   <mat-form-field>
     <input matInput placeholder="Title" [(ngModel)]="data.title">
   </mat-form-field>
   <mat-form-field>
     <textarea matInput placeholder="Description" [(ngModel)]="data.description"></textarea>
   </mat-form-field>
-  <mat-form-field>
-    <textarea matInput placeholder="Status" [(ngModel)]="data.status" required></textarea>
-  </mat-form-field>
-  <mat-slide-toggle [(ngModel)]="disabled">
+  <mat-slide-toggle [(ngModel)]="data.isDeadline">
     Deadline
   </mat-slide-toggle>
   <mat-form-field>
@@ -18,10 +14,10 @@
            [min]="minDate"
            [matDatepicker]="picker"
            placeholder="Choose a date"
-           [value]="date?.deadLine"
-           [disabled]="!disabled">
+           [(ngModel)]="data.deadLine"
+           [disabled]="!data.isDeadline">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker #picker ></mat-datepicker>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

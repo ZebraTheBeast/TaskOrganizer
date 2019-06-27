@@ -14,13 +14,16 @@
                 <mat-panel-title>
                   {{ category.title }}
                 </mat-panel-title>
-                <mat-panel-description>
-                  {{ category.description }}
-                </mat-panel-description>
               </mat-expansion-panel-header>
+              <p class="mt-2 description">{{ category.description }}</p>
               <div class="row">
                 <div class="col-md-6 card-button"><button mat-stroked-button color="primary" (click)="openCategoryDialog(category.id)" class="mr-auto">Edit</button></div>
-                <div class="col-md-6 card-button"><button mat-stroked-button color="warn" class="ml-auto">Delete</button></div>
+                <div class="col-md-6 card-button">
+                  <button mat-stroked-button color="warn" class="ml-auto" [matMenuTriggerFor]="categorymenu">Delete</button>
+                  <mat-menu #categorymenu="matMenu">
+                    <button mat-menu-item (click)="deleteCategory(category.id)">Confirm</button>
+                  </mat-menu>
+                </div>
               </div>
             </mat-expansion-panel>
           </div>
@@ -42,20 +45,45 @@
                   <mat-panel-title>
                     {{ mainObjective.title}}
                   </mat-panel-title>
-                  <mat-panel-description>
-                    {{mainObjective.description}}
-                  </mat-panel-description>
                 </mat-expansion-panel-header>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p class="mt-2 description">{{mainObjective.description}}</p>
+                  </div>
+                </div>
                 <div class="row pb-2">
-                  <div class="col-md-6 status-block">Status: {{ mainObjective.status }}</div>
-                  <div class="col-md-6">
-                    Deadline: {{ mainObjective.deadLine | date }}
-                    <span *ngIf="!mainObjective.deadLine">None</span>
+                  <div class="col-md-5 status-block">
+                    <div class="row">
+                      <p class="m-auto">Status: {{ mainObjective.status | statusPipe }}</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <button mat-icon-button (click)="changeMainObjectiveStatus(mainObjective.id, 1)" class="mr-auto">
+                          <mat-icon svgIcon="in-progress"></mat-icon>
+                        </button>
+                      </div>
+                      <div class="col-md-6">
+                        <button mat-icon-button (click)="changeMainObjectiveStatus(mainObjective.id, 2)" class="mr-auto">
+                          <mat-icon svgIcon="done"></mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-7 m-auto">
+                    Deadline: {{ mainObjective.deadline | date }}
+                    <span *ngIf="!mainObjective.deadline">None</span>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-6 card-button"><button mat-stroked-button color="primary" class="mr-auto">Edit</button></div>
-                  <div class="col-md-6 card-button"><button mat-stroked-button color="warn" class="ml-auto">Delete</button></div>
+                  <div class="col-md-6 card-button">
+                    <button mat-stroked-button color="primary" (click)="openMainObjectiveDialog(mainObjective.id)" class="mr-auto">Edit</button>
+                  </div>
+                  <div class="col-md-6 card-button">
+                    <button mat-stroked-button color="warn" class="ml-auto" [matMenuTriggerFor]="mainobjmenu">Delete</button>
+                    <mat-menu #mainobjmenu="matMenu">
+                      <button mat-menu-item (click)="deleteMainObjective(mainObjective.id)">Confirm</button>
+                    </mat-menu>
+                  </div>
                 </div>
               </mat-expansion-panel>
             </div>
@@ -66,27 +94,56 @@
     </div>
 
     <div class="col-md-4 childobjective-block">
-      <div class="block-header">Child objectives</div>
+      <div class="block-header">
+        Child objectives
+        <button mat-stroked-button color="primary" (click)="openChildObjectiveDialog()" class="mr-auto"> + Add</button>
+      </div>
       <cdk-virtual-scroll-viewport [itemSize]="100" class="viewport">
         <div *ngIf="choosenMainObjective">
-          <mat-accordion>
-            <div *cdkVirtualFor="let childObjective of choosenMainObjective.childObjectives; let i = index">
-              <mat-expansion-panel [expanded]="childstep===i" (opened)="childstep=i">
+          <mat-accordion multi #matAccordion="matAccordion">
+            <div *cdkVirtualFor="let childObjective of choosenMainObjective.childObjectives">
+              <mat-expansion-panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     {{ childObjective.title}}
                   </mat-panel-title>
                 </mat-expansion-panel-header>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p class="mt-2 description">{{ childObjective.description }}</p>
+                  </div>
+                </div>
                 <div class="row pb-2">
-                  <div class="col-md-6 status-block">Status: {{ childObjective.status }}</div>
-                  <div class="col-md-6">
-                    Deadline: {{ childObjective.deadLine | date }}
-                    <span *ngIf="!childObjective.deadLine">None</span>
+                  <div class="col-md-6 status-block m-auto">
+                    <div class="row">
+                      <p class="m-auto">Status: {{ childObjective.status | statusPipe }}</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <button mat-icon-button color="basic" (click)="changeChildObjectiveStatus(childObjective.id, 1)" class="mr-auto">
+                          <mat-icon svgIcon="in-progress"></mat-icon>
+                        </button>
+                      </div>
+                      <div class="col-md-6">
+                        <button mat-icon-button color="basic" (click)="changeChildObjectiveStatus(childObjective.id, 2)" class="mr-auto">
+                          <mat-icon svgIcon="done"></mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 m-auto">
+                    Deadline: {{ childObjective.deadline | date }}
+                    <span *ngIf="!childObjective.deadline">None</span>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-6 card-button"><button mat-stroked-button color="primary" class="mr-auto">Edit</button></div>
-                  <div class="col-md-6 card-button"><button mat-stroked-button color="warn" class="ml-auto">Delete</button></div>
+                  <div class="col-md-6 card-button"><button mat-stroked-button color="primary" class="mr-auto" (click)="openChildObjectiveDialog(childObjective.id)">Edit</button></div>
+                  <div class="col-md-6 card-button">
+                    <button mat-stroked-button color="warn" class="ml-auto" [matMenuTriggerFor]="childobjmenu">Delete</button>
+                    <mat-menu #childobjmenu="matMenu">
+                      <button mat-menu-item (click)="deleteChildObjective(childObjective.id)">Confirm</button>
+                    </mat-menu>
+                  </div>
                 </div>
               </mat-expansion-panel>
             </div>

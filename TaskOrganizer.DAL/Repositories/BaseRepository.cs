@@ -51,7 +51,7 @@ namespace TaskOrganizer.DataAccess.Repositories
 
         public async Task Update(TEntity item)
         {
-            _context.Entry(item).State = EntityState.Modified;
+            _context.Update<TEntity>(item);
             await _context.SaveChangesAsync();
         }
     }

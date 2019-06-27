@@ -13,3 +13,7 @@
 .ng-star-inserted {
   padding-bottom: 3px;
 }
+
+.mat-expansion-panel-body {
+  background-color: #f3f3f3 !important;
+}

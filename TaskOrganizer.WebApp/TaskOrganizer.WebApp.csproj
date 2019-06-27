@@ -28,9 +28,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\account\account.service.ts" />
     <None Remove="ClientApp\src\app\shared\models\category.ts" />
     <None Remove="ClientApp\src\app\shared\models\child-objective.ts" />
     <None Remove="ClientApp\src\app\shared\models\main-objective.ts" />
+    <None Remove="ClientApp\src\app\shared\models\mock-category.js" />
+    <None Remove="ClientApp\src\app\shared\models\mock-category.js" />
+    <None Remove="ClientApp\src\app\shared\models\mock-category.js.map" />
+    <None Remove="ClientApp\src\app\shared\models\mock-category.js.map" />
     <None Remove="ClientApp\src\app\shared\models\mock-category.ts" />
   </ItemGroup>
 
@@ -41,10 +46,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\account\account.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\category.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\child-objective.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\main-objective.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\models\mock-category.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
@@ -73,5 +79,9 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
-
+  <ItemGroup>
+    <Content Include="ClientApp\tsconfig.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

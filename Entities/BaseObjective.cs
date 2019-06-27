@@ -8,6 +8,7 @@ namespace TaskOrganizer.Entities
     {
         [Required]
         public string Title { get; set; }
+        public string Description { get; set; }
         [Required]
         public ObjectiveStatus Status { get; set; }
         public DateTime? DeadLine { get; set; }

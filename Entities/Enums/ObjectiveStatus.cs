@@ -2,9 +2,8 @@
 {
 	public enum ObjectiveStatus
 	{
-		Untouched = 0,
+		New = 0,
 		InProgress = 1,
-		Done = 2,
-		Deleted = 3
+		Done = 2
 	}
 }

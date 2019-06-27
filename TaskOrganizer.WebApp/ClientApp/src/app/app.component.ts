@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';  
-import { Observable, of } from 'rxjs';
-import { HttpRequest } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,22 +7,19 @@ import { HttpRequest } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  logged: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.getAll();
+    if (localStorage.getItem("userId")) {
+      this.logged = true;
+    }
   }
 
-  getAll(): void {
-    this.startGame().subscribe(
-      title => {
-        console.log(title);
-      }
-    );
+  logout(): void {
+    localStorage.removeItem("userId");
+    this.router.navigate(['account']);
   }
-  
-  startGame(): Observable<any> {
-    return this.http.get("/api/values");
-  }
+
 }

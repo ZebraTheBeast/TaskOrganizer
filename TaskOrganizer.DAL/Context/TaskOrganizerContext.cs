@@ -17,6 +17,31 @@ namespace TaskOrganizer.DAL.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.Entity<User>()
+                .HasAlternateKey(user => user.Username)
+                .HasName("Unique_username");
+
+            builder.Entity<ChildObjective>()
+                .HasOne(co => co.MainObjective)
+                .WithMany(mo => mo.ChildObjectives)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<MainObjective>()
+                .HasOne(mo => mo.Category)
+                .WithMany(ctg => ctg.MainObjectives)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Category>()
+                .HasOne(ctg => ctg.User)
+                .WithMany(u => u.Categories)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.UseSqlServer("Data Source=desktop-p9v5qd9;Initial Catalog=TaskOrgDb;Integrated Security=True");
+            
         }
     }
 }

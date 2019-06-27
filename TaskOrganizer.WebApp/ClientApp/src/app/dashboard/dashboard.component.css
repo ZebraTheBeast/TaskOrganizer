@@ -54,3 +54,6 @@
   display: flex;
 }
 
+.description {
+  color: grey;
+}

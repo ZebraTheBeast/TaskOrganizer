@@ -1,41 +1,141 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TaskOrganizer.BLL.Services.Inerfaces;
+using TaskOrganizer.Entities.Enums;
+using TaskOrganizer.ViewModels;
+using TaskOrganizer.ViewModels.Shared;
 
 namespace TaskOrganizer.WebApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class ValuesController : Controller
     {
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
+
+        private IDashboardService _dashboardService;
+
+        public ValuesController(IDashboardService dashboardService)
         {
-            return new string[] { "value1", "value5" };
+            _dashboardService = dashboardService;
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        [ActionName("GetCategories")]
+        public async Task<List<CategoryView>> GetCategories([FromBody]long userId)
         {
+            var categories = await _dashboardService.GetCategories(userId);
+            return categories;
         }
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        [ActionName("AddCategory")]
+        public async Task<CategoryView> AddCategory([FromBody]CategoryRequestView requestView)
         {
+
+            var category = await _dashboardService.AddCategory(
+                requestView.category.Title,
+                requestView.category.Description,
+                requestView.userId);
+
+            return category;
+
         }
 
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost]
+        [ActionName("EditCategory")]
+        public async Task<string> EditCategory([FromBody]CategoryRequestView requestView)
         {
+            await _dashboardService.EditCategory(
+                requestView.category.Id,
+                requestView.category.Title,
+                requestView.category.Description,
+                requestView.userId);
+            return "";
+        }
+
+        [HttpPost]
+        [ActionName("DeleteCategory")]
+        public async Task<string> DeleteCategory([FromBody]long categoryId)
+        {
+            await _dashboardService.DeleteCategory(categoryId);
+
+            return "";
+        }
+
+        [HttpPost]
+        [ActionName("AddMainObjective")]
+        public async Task<MainObjectiveView> AddMainObjecitve([FromBody]MainObjectiveRequestView requestView)
+        {
+            var mainObjective = await _dashboardService.AddMainObjective(
+                    requestView.mainObjective,
+                    requestView.categoryId);
+
+            return mainObjective;
+        }
+
+        [HttpPost]
+        [ActionName("EditMainObjective")]
+        public async Task<string> EditMainObjective([FromBody]MainObjectiveView mainObjectiveView)
+        {
+            await _dashboardService.EditMainObjective(mainObjectiveView);
+
+            return "";
+        }
+
+        [HttpPost]
+        [ActionName("DeleteMainObjective")]
+        public async Task<string> DeleteMainObjective([FromBody]long mainObjectiveId)
+        {
+            await _dashboardService.DeleteMainObjective(mainObjectiveId);
+
+            return "";
+        }
+
+        [HttpPost]
+        [ActionName("UpdateStatusMainObjective")]
+        public async Task<string> UpdateStatusMainObjective([FromBody]UpdateStatusRequestView requestView)
+        {
+            await _dashboardService.ChangeStatusMainObjective(requestView.objectiveId, (ObjectiveStatus)requestView.statusId);
+            return "";
+        }
+
+
+        [HttpPost]
+        [ActionName("AddChildObjective")]
+        public async Task<ChildObjectiveView> AddChildObjecitve([FromBody]ChildObjectiveRequestView requestView)
+        {
+            var childObjective = await _dashboardService.AddChildObjective(
+                requestView.childObjective,
+                requestView.mainObjectiveId);
+
+            return childObjective;
+        }
+
+        [HttpPost]
+        [ActionName("EditChildObjective")]
+        public async Task<string> EditChildObjective([FromBody]ChildObjectiveView childObjectiveView)
+        {
+            await _dashboardService.EditChildObjective(childObjectiveView);
+
+            return "";
+        }
+
+        [HttpPost]
+        [ActionName("DeleteChildObjective")]
+        public async Task<string> DeleteChildObjective([FromBody]long childObjectiveId)
+        {
+            await _dashboardService.DeleteChildObjective(childObjectiveId);
+
+            return "";
+        }
+
+        [HttpPost]
+        [ActionName("UpdateStatusChildObjective")]
+        public async Task<string> UpdateStatusChildObjective([FromBody]UpdateStatusRequestView requestView)
+        {
+            await _dashboardService.ChangeStatusChildObjective(requestView.objectiveId, (ObjectiveStatus)requestView.statusId);
+            return "";
         }
     }
 }

@@ -1,6 +1,7 @@
 export class ChildObjective {
   id: number;
   title: string;
-  status: string;
-  deadLine?: Date;
+  description?: string;
+  status: number;
+  deadline?: Date;
 }

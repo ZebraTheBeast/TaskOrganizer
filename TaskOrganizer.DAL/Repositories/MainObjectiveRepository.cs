@@ -21,11 +21,10 @@ namespace TaskOrganizer.DataAccess.Repositories
 
         public async Task UpdateStatus(long mainObjectiveId, ObjectiveStatus objectiveStatus)
         {
-            var mainObjective = new MainObjective();
-            mainObjective.Id = mainObjectiveId;
+            var mainObjective = await _dbSet.FirstOrDefaultAsync(mo => mo.Id == mainObjectiveId);
             mainObjective.Status = objectiveStatus;
 
-            _context.Entry(mainObjective).Property("Status").IsModified = true;
+            _dbSet.Update(mainObjective);
             await _context.SaveChangesAsync();
         }
     }

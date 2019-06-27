@@ -51,6 +51,8 @@ namespace TaskOrganizer.DAL.Migrations
 
                     b.Property<DateTime?>("DeadLine");
 
+                    b.Property<string>("Description");
+
                     b.Property<long>("MainObjectiveId");
 
                     b.Property<int>("Status");
@@ -99,12 +101,16 @@ namespace TaskOrganizer.DAL.Migrations
 
                     b.Property<DateTime>("CreationDate");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Password")
                         .IsRequired();
 
-                    b.Property<int>("Type");
+                    b.Property<string>("Username")
+                        .IsRequired();
 
                     b.HasKey("Id");
+
+                    b.HasAlternateKey("Username")
+                        .HasName("Unique_username");
 
                     b.ToTable("Users");
                 });
@@ -112,7 +118,7 @@ namespace TaskOrganizer.DAL.Migrations
             modelBuilder.Entity("TaskOrganizer.Entities.Category", b =>
                 {
                     b.HasOne("TaskOrganizer.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Categories")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

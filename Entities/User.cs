@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using TaskOrganizer.Entities.Enums;
 
 namespace TaskOrganizer.Entities
@@ -6,8 +7,11 @@ namespace TaskOrganizer.Entities
 	public class User : BaseEntity
 	{
         [Required]
-        public string Name { get; set; }
+        public string Username { get; set; }
         [Required]
-        public UserType Type { get; set; }
+        
+        public string Password { get; set; }
+
+        public virtual List<Category> Categories { get; set; }
 	}
 }
